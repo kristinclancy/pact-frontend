@@ -57,7 +57,7 @@ declare global {
       element: Element,
       options?: {
         focusOnPlay?: boolean;
-      }
+      },
     ): ModelViewer;
     play(): void;
     pause(): void;
@@ -70,10 +70,13 @@ declare global {
   interface Navigator {
     readonly deviceMemory?: number;
   }
+
+  // Embla is loaded as a global browser script by cross-sell.liquid.
+  const EmblaCarousel: any;
 }
 
 /** Augment ProductSelectEvent detail with Horizon-specific fields */
-declare module '@shopify/events' {
+declare module "@shopify/events" {
   interface ProductSelectPayloadDetail {
     optionValueId?: string;
     /** Synchronous selected variant ID; '' means no variant. Await the promise for full variant data. */
@@ -103,21 +106,21 @@ declare module '@shopify/events' {
 }
 
 /** Augment CartErrorEvent detail with Horizon-specific fields */
-declare module '@shopify/events' {
+declare module "@shopify/events" {
   interface CartErrorPayloadDetail {
     errors?: Record<string, string[]>;
   }
 }
 
 /** Augment CartDiscountUpdateEvent result detail with Horizon-specific fields */
-declare module '@shopify/events' {
+declare module "@shopify/events" {
   interface CartDiscountUpdateResultDetail {
     sections?: Record<string, string>;
   }
 }
 
 /** Augment CartLinesUpdateEvent result detail with Horizon-specific fields */
-declare module '@shopify/events' {
+declare module "@shopify/events" {
   interface CartLinesUpdateResultDetail {
     sections?: Record<string, string>;
     didError?: boolean;
